@@ -1,0 +1,24 @@
+trigger: main
+pool: Ajent_ka_jhund
+
+stages:
+  - stage: terraforminstall
+    jobs:
+      - job: terraforinstall
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+
+  - stage: terraforminit
+    jobs:
+      - job: terraforminit
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'Azure subscription 1(6e06e212-633e-4e8c-8ab0-7ea51400a2e2)'
+            backendAzureRmStorageAccountName: 'ddfDVShjsd'
+            backendAzureRmContainerName: 'dvsDJS'
+            backendAzureRmKey: 'dev.tfstate'
