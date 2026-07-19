@@ -24,3 +24,13 @@ stages:
             backendAzureRmStorageAccountName: 'ddfDVShjsd'
             backendAzureRmContainerName: 'dvsDJS'
             backendAzureRmKey: 'dev.tfstate'
+
+  - stage: terraformplan
+    jobs:
+      - job: terraformplan
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'Azure subscription 1(6e06e212-633e-4e8c-8ab0-7ea51400a2e2)'
